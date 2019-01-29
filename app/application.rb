@@ -31,11 +31,11 @@ class Application
     resp.finish
   end
 
-  def handle_search(search_term)
-    if @@items.include?(search_term)
-      return "#{search_term} is one of our items"
+  def handle_search(@param)
+    if @@items.include?(@param)
+      return "#{@param} is one of our items"
     else
-      return "Couldn't find #{search_term}"
+      return "Couldn't find #{@param}"
     end
   end
 end
