@@ -4,7 +4,7 @@ class Application
   def call(env)
     resp = Rack::Response.new
     req = Rack::Request.new(env)
-    param = req.params["q"]
+    param = req.params["item"]
     if req.path.match(/items/)
       @@items.each do |item|
         resp.write "#{item}\n"
