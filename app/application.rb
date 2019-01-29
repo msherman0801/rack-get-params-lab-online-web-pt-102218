@@ -1,11 +1,10 @@
 class Application
 
-  @@items = ["Apples","Carrots","Pears"]
   @@cart = []
   def call(env)
     resp = Rack::Response.new
     req = Rack::Request.new(env)
-    param = req.params["q"]
+    param = req.params["item"]
     if req.path.match(/items/)
       @@items.each do |item|
         resp.write "#{item}\n"
@@ -20,11 +19,11 @@ class Application
         @@cart.each {|i| resp.write "#{i}\n"}
       end
     elsif req.path.match(/add/)
-      if @@items.include?(param)
+      if !@@items.include?(param)
+        resp.write "We don't have that item"
+      else
         @@cart << param
         resp.write "added #{param}"
-      elsif !@@items.empty? && !@@items.include?(param)
-        resp.write "We don't have that item"
       end
     end
 
