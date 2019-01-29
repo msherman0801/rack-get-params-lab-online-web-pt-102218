@@ -20,11 +20,11 @@ class Application
         @@cart.each {|i| resp.write "#{i}\n"}
       end
     elsif req.path.match(/add/)
-      if @@items.include?(param)
+      if !@@items.include?(param)
+        resp.write "We don't have that item"
+      else
         @@cart << param
         resp.write "added #{param}"
-      else
-        resp.write "We don't have that item"
       end
     end
 
