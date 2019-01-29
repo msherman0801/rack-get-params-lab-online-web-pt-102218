@@ -23,7 +23,7 @@ class Application
       if @@items.include?(param)
         @@cart << param
         resp.write "added #{param}"
-      elsif !@@items.empty? && !@@items.include?(param)
+      else
         resp.write "We don't have that item"
       end
     end
