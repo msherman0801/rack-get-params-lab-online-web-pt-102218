@@ -30,7 +30,6 @@ class Application
       end
     end
 
-    resp.finish
   end
 
   def handle_search(search_term)
