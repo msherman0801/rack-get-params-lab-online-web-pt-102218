@@ -23,7 +23,6 @@ class Application
         resp.write "We don't have that item"
       else
         @@cart << param
-        @@cart.delete(p)
         resp.write "added #{param}"
       end
     end
