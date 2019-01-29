@@ -25,6 +25,7 @@ class Application
       else
         @@cart << param
         resp.write "added #{param}"
+        resp.finish
       end
     end
 
